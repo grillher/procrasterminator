@@ -60,6 +60,20 @@ namespace Procrasterminator.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap cross {
+            get {
+                object obj = ResourceManager.GetObject("cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap plus {
+            get {
+                object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap sapoTerminator {
             get {
                 object obj = ResourceManager.GetObject("sapoTerminator", resourceCulture);
