@@ -1,11 +1,7 @@
 using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
 using Microsoft.DirectX.AudioVideoPlayback;
 
 namespace Procrasterminator
@@ -13,7 +9,7 @@ namespace Procrasterminator
 	/// <summary>
 	/// Summary description for FormPlayVideo.
 	/// </summary>
-	public class FormPlayVideo : System.Windows.Forms.Form
+	public class FormPlayVideo : Form
 	{
 		private IContainer components;
         private Timer timer1;
@@ -22,10 +18,14 @@ namespace Procrasterminator
         private Panel panelVideo;
         private Video video;
 
+	    private const int INITIAL_MOVIE_RECTANGLE_HEIGHT = 20;
 	    private int movieRectangleTop;
         private int movieRectangleLeft;
 	    private int movieRectangleHeight;
+        private int movieRectangleWidth;
+
 	    private bool bIsPlayingVideo = true;
+	    private bool bHideVideo;
 
 	    public FormPlayVideo(String path)
 		{
@@ -42,13 +42,14 @@ namespace Procrasterminator
             panelVideo.Top = Height / 2 - video.Size.Height / 2;
             panelVideo.Left = Width / 2 - video.Size.Width / 2;
 
-            movieRectangleHeight = 20;
-            movieRectangleTop = Height / 2 - movieRectangleHeight / 2; ;
+            movieRectangleHeight = INITIAL_MOVIE_RECTANGLE_HEIGHT;
+            movieRectangleTop = Height / 2 - movieRectangleHeight / 2;
             movieRectangleLeft = Width;
+	        movieRectangleWidth = Width;
 
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
 
-            video.Ending += new EventHandler(CloseWindow);
+            video.Ending += CloseWindow;
 
 	        Show();
 		}
@@ -123,16 +124,31 @@ namespace Procrasterminator
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-            e.Graphics.FillRectangle(new SolidBrush(Color.Black), new Rectangle(movieRectangleLeft, movieRectangleTop, Width, movieRectangleHeight));
+            e.Graphics.FillRectangle(new SolidBrush(Color.Black), new Rectangle(movieRectangleLeft, movieRectangleTop, movieRectangleWidth, movieRectangleHeight));
 		}
 
 
-		private void timer1_Tick(object sender, System.EventArgs e)
+		private void timer1_Tick(object sender, EventArgs e)
 		{	
 
 			Invalidate();
 
-            if(movieRectangleLeft > 0)
+            if (bHideVideo && movieRectangleHeight > INITIAL_MOVIE_RECTANGLE_HEIGHT)
+            {
+                movieRectangleTop += 5;
+                movieRectangleHeight -= 10;
+            }
+            else if (bHideVideo && movieRectangleLeft < Width)
+            {
+                movieRectangleLeft += 20;
+                movieRectangleWidth -= 40;
+            }
+            else if (bHideVideo)
+            {
+                bIsPlayingVideo = false;
+                Close();
+            }
+            else if(movieRectangleLeft > 0)
                 movieRectangleLeft -= 20;
             else if(movieRectangleTop > panelVideo.Top)
             {
@@ -145,21 +161,24 @@ namespace Procrasterminator
                 video.Play();
                 bShowVideo = true;
             }
+            
+
 		}
 
 	    private void CloseWindow(object sender, EventArgs e)
 	    {
-	        bIsPlayingVideo = false;
-	        Close();
+	        bHideVideo = true;
+            panelVideo.Visible = false;
+            System.Diagnostics.Debug.WriteLine("Death");
 	    }
 
 	    // Starting minimized is hacking crap done to get rid of the initial
 		// flashing of garbage when the program first starts. We still see a
 		// bit of a title bar zipping around, odd since this form border style is none.
 		// ANYBODY KNOW HOW TO DO THIS CORRECTLY?
-		private void Form1_Load(object sender, System.EventArgs e)
+		private void Form1_Load(object sender, EventArgs e)
 		{
-			this.WindowState = FormWindowState.Normal;
+			WindowState = FormWindowState.Normal;
 		}
 
 

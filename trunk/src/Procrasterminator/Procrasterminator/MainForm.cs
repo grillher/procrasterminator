@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using Procrasterminator.Parsers;
 using SHDocVw;
 
 namespace Procrasterminator
@@ -28,13 +30,15 @@ namespace Procrasterminator
             CenterToScreen();
 
             //inicializa os modos
-            mode = ProcrastinationMode.AGGRESSIVE;
-            aggressiveToolStripMenuItem.Checked = true;
-            radioButtonAggressive.Checked = true;
+            mode = ProcrastinationMode.OFF;
+            offToolStripMenuItem.Checked = true;
+            radioButtonOff.Checked = true;
 
             //inicializa o tempo
             textBoxTolerantMinutes.Text = toleranceMinutes.ToString();
             textBoxTolerantSeconds.Text = toleranceSeconds.ToString();
+
+            comboBoxHost.SelectedIndex = 0;
 
         }
         #endregion
@@ -245,11 +249,11 @@ namespace Procrasterminator
             if(formPlay == null || !formPlay.IsPlayingVideo())
             {
                 isPlayingVideo = true;
-                formPlay = new FormPlayVideo("boom.avi");
+                formPlay = new FormPlayVideo("Procrasterminator.avi");
 
                 elapsedProcrastinationTime = 0;
 
-                //KillInternetExplorerWindows();
+                KillInternetExplorerWindows();
             }
         }
 
@@ -268,6 +272,23 @@ namespace Procrasterminator
             }
         }
 
+        #endregion
+
+        #region Listagem de Tarefas
+        private void buttonGetTasks_Click(object sender, EventArgs e)
+        {
+            if(comboBoxHost.Text == "" || textBoxEmail.Text == "")
+                MessageBox.Show("Please fill in the necessary data to estabilish the connection", "Insufficient Information",
+                                MessageBoxButtons.OK, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+
+            List<String> tasks = ToDoistParser.parse(textBoxEmail.Text, textBoxPassword.Text);
+
+            listViewTaskList.Clear();
+
+            foreach (String item in tasks)
+                listViewTaskList.Items.Add("- " + item);
+        }
         #endregion
     }
 }

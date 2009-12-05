@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem51 = new System.Windows.Forms.ListViewItem("Facebook");
-            System.Windows.Forms.ListViewItem listViewItem52 = new System.Windows.Forms.ListViewItem("YouTube");
-            System.Windows.Forms.ListViewItem listViewItem53 = new System.Windows.Forms.ListViewItem("Twitter");
-            System.Windows.Forms.ListViewItem listViewItem54 = new System.Windows.Forms.ListViewItem("Collegehumor");
-            System.Windows.Forms.ListViewItem listViewItem55 = new System.Windows.Forms.ListViewItem("Geekologie");
-            System.Windows.Forms.ListViewItem listViewItem56 = new System.Windows.Forms.ListViewItem("Freerice");
-            System.Windows.Forms.ListViewItem listViewItem57 = new System.Windows.Forms.ListViewItem("Pogo");
-            System.Windows.Forms.ListViewItem listViewItem58 = new System.Windows.Forms.ListViewItem("Bored");
-            System.Windows.Forms.ListViewItem listViewItem59 = new System.Windows.Forms.ListViewItem("Postsecret");
-            System.Windows.Forms.ListViewItem listViewItem60 = new System.Windows.Forms.ListViewItem("Hi5");
+            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Facebook");
+            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("YouTube");
+            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Twitter");
+            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Collegehumor");
+            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Geekologie");
+            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Freerice");
+            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Pogo");
+            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Bored");
+            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Postsecret");
+            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Hi5");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.labelTitle = new System.Windows.Forms.Label();
             this.groupBoxListKeywords = new System.Windows.Forms.GroupBox();
@@ -75,8 +75,18 @@
             this.tolerantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.comboBoxHost = new System.Windows.Forms.ComboBox();
+            this.listViewTaskList = new System.Windows.Forms.ListView();
+            this.labelHost = new System.Windows.Forms.Label();
+            this.labelTaskList = new System.Windows.Forms.Label();
+            this.buttonGetTasks = new System.Windows.Forms.Button();
             this.groupBoxListKeywords.SuspendLayout();
             this.groupBoxMode.SuspendLayout();
+            this.groupBoxTasks.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
             this.menuStripTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSapoTerminator)).BeginInit();
@@ -138,16 +148,16 @@
             // listViewKeyword
             // 
             this.listViewKeyword.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem51,
-            listViewItem52,
-            listViewItem53,
-            listViewItem54,
-            listViewItem55,
-            listViewItem56,
-            listViewItem57,
-            listViewItem58,
-            listViewItem59,
-            listViewItem60});
+            listViewItem31,
+            listViewItem32,
+            listViewItem33,
+            listViewItem34,
+            listViewItem35,
+            listViewItem36,
+            listViewItem37,
+            listViewItem38,
+            listViewItem39,
+            listViewItem40});
             this.listViewKeyword.Location = new System.Drawing.Point(6, 62);
             this.listViewKeyword.Name = "listViewKeyword";
             this.listViewKeyword.Size = new System.Drawing.Size(169, 230);
@@ -175,7 +185,7 @@
             this.groupBoxMode.Controls.Add(this.labelAgressiveDescription);
             this.groupBoxMode.Controls.Add(this.radioButtonTolerant);
             this.groupBoxMode.Controls.Add(this.radioButtonAggressive);
-            this.groupBoxMode.Location = new System.Drawing.Point(207, 96);
+            this.groupBoxMode.Location = new System.Drawing.Point(210, 96);
             this.groupBoxMode.Name = "groupBoxMode";
             this.groupBoxMode.Size = new System.Drawing.Size(224, 260);
             this.groupBoxMode.TabIndex = 3;
@@ -286,9 +296,18 @@
             // 
             // groupBoxTasks
             // 
-            this.groupBoxTasks.Location = new System.Drawing.Point(442, 96);
+            this.groupBoxTasks.Controls.Add(this.buttonGetTasks);
+            this.groupBoxTasks.Controls.Add(this.labelTaskList);
+            this.groupBoxTasks.Controls.Add(this.labelHost);
+            this.groupBoxTasks.Controls.Add(this.listViewTaskList);
+            this.groupBoxTasks.Controls.Add(this.comboBoxHost);
+            this.groupBoxTasks.Controls.Add(this.textBoxPassword);
+            this.groupBoxTasks.Controls.Add(this.label1);
+            this.groupBoxTasks.Controls.Add(this.textBoxEmail);
+            this.groupBoxTasks.Controls.Add(this.labelEmail);
+            this.groupBoxTasks.Location = new System.Drawing.Point(443, 96);
             this.groupBoxTasks.Name = "groupBoxTasks";
-            this.groupBoxTasks.Size = new System.Drawing.Size(226, 352);
+            this.groupBoxTasks.Size = new System.Drawing.Size(229, 356);
             this.groupBoxTasks.TabIndex = 4;
             this.groupBoxTasks.TabStop = false;
             this.groupBoxTasks.Text = "Tasks";
@@ -296,9 +315,9 @@
             // groupBoxGeneral
             // 
             this.groupBoxGeneral.Controls.Add(this.checkBoxLaunchOnStartUp);
-            this.groupBoxGeneral.Location = new System.Drawing.Point(209, 390);
+            this.groupBoxGeneral.Location = new System.Drawing.Point(212, 362);
             this.groupBoxGeneral.Name = "groupBoxGeneral";
-            this.groupBoxGeneral.Size = new System.Drawing.Size(227, 62);
+            this.groupBoxGeneral.Size = new System.Drawing.Size(222, 94);
             this.groupBoxGeneral.TabIndex = 5;
             this.groupBoxGeneral.TabStop = false;
             this.groupBoxGeneral.Text = "General";
@@ -306,7 +325,9 @@
             // checkBoxLaunchOnStartUp
             // 
             this.checkBoxLaunchOnStartUp.AutoSize = true;
-            this.checkBoxLaunchOnStartUp.Location = new System.Drawing.Point(13, 29);
+            this.checkBoxLaunchOnStartUp.Checked = true;
+            this.checkBoxLaunchOnStartUp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLaunchOnStartUp.Location = new System.Drawing.Point(13, 44);
             this.checkBoxLaunchOnStartUp.Name = "checkBoxLaunchOnStartUp";
             this.checkBoxLaunchOnStartUp.Size = new System.Drawing.Size(199, 17);
             this.checkBoxLaunchOnStartUp.TabIndex = 0;
@@ -423,15 +444,98 @@
             this.toolStripMenuItemExit.Text = "Exit";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
             // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(5, 70);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(38, 13);
+            this.labelEmail.TabIndex = 0;
+            this.labelEmail.Text = "E-mail:";
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(9, 90);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(208, 20);
+            this.textBoxEmail.TabIndex = 1;
+            this.textBoxEmail.Text = "grillher@gmail.com";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Password:";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(9, 129);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(209, 20);
+            this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.Text = "coiso";
+            // 
+            // comboBoxHost
+            // 
+            this.comboBoxHost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxHost.FormattingEnabled = true;
+            this.comboBoxHost.Items.AddRange(new object[] {
+            "Todoist.com"});
+            this.comboBoxHost.Location = new System.Drawing.Point(9, 42);
+            this.comboBoxHost.Name = "comboBoxHost";
+            this.comboBoxHost.Size = new System.Drawing.Size(211, 21);
+            this.comboBoxHost.TabIndex = 4;
+            // 
+            // listViewTaskList
+            // 
+            this.listViewTaskList.Location = new System.Drawing.Point(9, 191);
+            this.listViewTaskList.Name = "listViewTaskList";
+            this.listViewTaskList.Size = new System.Drawing.Size(211, 159);
+            this.listViewTaskList.TabIndex = 5;
+            this.listViewTaskList.UseCompatibleStateImageBehavior = false;
+            this.listViewTaskList.View = System.Windows.Forms.View.List;
+            // 
+            // labelHost
+            // 
+            this.labelHost.AutoSize = true;
+            this.labelHost.Location = new System.Drawing.Point(6, 26);
+            this.labelHost.Name = "labelHost";
+            this.labelHost.Size = new System.Drawing.Size(32, 13);
+            this.labelHost.TabIndex = 6;
+            this.labelHost.Text = "Host:";
+            // 
+            // labelTaskList
+            // 
+            this.labelTaskList.AutoSize = true;
+            this.labelTaskList.Location = new System.Drawing.Point(8, 175);
+            this.labelTaskList.Name = "labelTaskList";
+            this.labelTaskList.Size = new System.Drawing.Size(53, 13);
+            this.labelTaskList.TabIndex = 7;
+            this.labelTaskList.Text = "Task List:";
+            // 
+            // buttonGetTasks
+            // 
+            this.buttonGetTasks.Location = new System.Drawing.Point(138, 155);
+            this.buttonGetTasks.Name = "buttonGetTasks";
+            this.buttonGetTasks.Size = new System.Drawing.Size(82, 22);
+            this.buttonGetTasks.TabIndex = 8;
+            this.buttonGetTasks.Text = "Get Tasks!";
+            this.buttonGetTasks.UseVisualStyleBackColor = true;
+            this.buttonGetTasks.Click += new System.EventHandler(this.buttonGetTasks_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 464);
             this.Controls.Add(this.groupBoxGeneral);
-            this.Controls.Add(this.groupBoxTasks);
             this.Controls.Add(this.groupBoxMode);
             this.Controls.Add(this.groupBoxListKeywords);
+            this.Controls.Add(this.groupBoxTasks);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.pictureBoxSapoTerminator);
             this.Controls.Add(this.menuStripTop);
@@ -445,6 +549,8 @@
             this.groupBoxListKeywords.PerformLayout();
             this.groupBoxMode.ResumeLayout(false);
             this.groupBoxMode.PerformLayout();
+            this.groupBoxTasks.ResumeLayout(false);
+            this.groupBoxTasks.PerformLayout();
             this.groupBoxGeneral.ResumeLayout(false);
             this.groupBoxGeneral.PerformLayout();
             this.menuStripTop.ResumeLayout(false);
@@ -493,6 +599,15 @@
         private System.Windows.Forms.ToolStripMenuItem aggressiveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tolerantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label labelTaskList;
+        private System.Windows.Forms.Label labelHost;
+        private System.Windows.Forms.ListView listViewTaskList;
+        private System.Windows.Forms.ComboBox comboBoxHost;
+        private System.Windows.Forms.Button buttonGetTasks;
     }
 }
 
