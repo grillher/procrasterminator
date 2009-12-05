@@ -242,7 +242,7 @@ namespace Procrasterminator
 
         private void ShowVideo()
         {
-            if(!isPlayingVideo)
+            if(formPlay == null || !formPlay.IsPlayingVideo())
             {
                 isPlayingVideo = true;
                 formPlay = new FormPlayVideo("boom.avi");
