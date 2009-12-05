@@ -16,6 +16,10 @@ namespace Procrasterminator
         private ProcrastinationMode mode;
         private int toleranceMinutes;
         private int toleranceSeconds = 10;
+        private bool isPlayingVideo = false;
+        private FormPlayVideo formPlay;
+
+        private int elapsedProcrastinationTime;
 
         #region Construtor
         public MainForm()
@@ -205,28 +209,65 @@ namespace Procrasterminator
         #region Controlo periódico de procrastinação
         private void timerController_Tick(object sender, EventArgs e)
         {
-            //CheckInternetExplorerWindows();
-            CheckMozillaFireFoxWindows();
+            CheckInternetExplorerWindows();
+            //CheckMozillaFireFoxWindows();
         }
 
         private void CheckInternetExplorerWindows()
         {
-            foreach(InternetExplorer iexplorer in new ShellWindowsClass())
+            foreach (InternetExplorer iexplorer in new ShellWindowsClass())
             {
-                foreach(ListViewItem keyword in listViewKeyword.Items)
+                foreach (ListViewItem keyword in listViewKeyword.Items)
                 {
                     if (iexplorer.LocationURL.ToLower().Contains(keyword.Text.ToLower()))
                     {
-                       System.Diagnostics.Debug.WriteLine(iexplorer.LocationName);
+                        switch (mode)
+                        {
+                            case ProcrastinationMode.AGGRESSIVE:
+                                ShowVideo();
+                                break;
+                            case ProcrastinationMode.TOLERANT:
+                                elapsedProcrastinationTime++;
+
+                                if (elapsedProcrastinationTime >= toleranceMinutes * 60 + toleranceSeconds)
+                                {
+                                    ShowVideo();
+                                }
+                                break;
+                        }
                     }
                 }
             }
         }
 
-        private void CheckMozillaFireFoxWindows()
+        private void ShowVideo()
         {
-            
+            if(!isPlayingVideo)
+            {
+                isPlayingVideo = true;
+                formPlay = new FormPlayVideo("boom.avi");
+
+                elapsedProcrastinationTime = 0;
+
+                //KillInternetExplorerWindows();
+            }
         }
+
+
+        private void KillInternetExplorerWindows()
+        {
+            foreach (InternetExplorer iexplorer in new ShellWindowsClass())
+            {
+                foreach (ListViewItem keyword in listViewKeyword.Items)
+                {
+                    if (iexplorer.LocationURL.ToLower().Contains(keyword.Text.ToLower()))
+                    {
+                        iexplorer.Quit();
+                    }
+                }
+            }
+        }
+
         #endregion
     }
 }
