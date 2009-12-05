@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
@@ -28,10 +29,13 @@ namespace Procrasterminator
 	    private bool bIsPlayingVideo = true;
 	    private bool bHideVideo;
 
-	    public FormPlayVideo(String path)
+        private List<TextData> textDataList = new List<TextData>();
+	    private bool bShowTasks = false;
+
+	    public FormPlayVideo(String path, List<String> tasksList)
 		{
 			InitializeComponent();
-
+            
             video = new Video(path);
 
             Width = Screen.PrimaryScreen.Bounds.Width;
@@ -50,16 +54,42 @@ namespace Procrasterminator
 
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
 
+            GenerateTextData(tasksList);
+
             video.Ending += CloseWindow;
 
 	        Show();
 		}
-        
-       
-        public void PlayVideo()
-        {
-            
-        }
+
+	    private void GenerateTextData(List<string> list)
+	    {
+	        int mode = 0;
+	        int halfHeight = Height / 2;
+
+            for(int i = 0; i < list.Count; i++)
+            {
+                switch(mode)
+                {
+                    case 0:
+                        textDataList.Add(new TextData(list[i], new Point(10, halfHeight - 25), -45));
+                        mode++;
+                        break;
+                    case 1:
+                        textDataList.Add(new TextData(list[i], new Point(10, halfHeight + 175), -45));
+                        mode++;
+                        break;
+                    case 2:
+                        textDataList.Add(new TextData(list[i], new Point(Width - 250, halfHeight + 100), -45));
+                        mode++;
+                        break;
+                    case 3:
+                        textDataList.Add(new TextData(list[i], new Point(Width - 250, halfHeight - 100), -45));
+                        mode = 0;
+                        break;
+                }
+                    
+            }
+	    }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -127,34 +157,48 @@ namespace Procrasterminator
 		{
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), new Rectangle(movieRectangleLeft, movieRectangleTop, movieRectangleWidth, movieRectangleHeight));
 
-              // X + fontSize/2
+            if (bShowTasks)
+            {
+                DrawTextData(e.Graphics, new TextData("Tasks!", new Point(50, 120), 0));
+                DrawTextData(e.Graphics, new TextData("Tasks!", new Point(Width - 250, 120), 0));
 
-            
+                foreach (TextData data in textDataList)
+                {
+                    DrawTextData(e.Graphics, data);
+                }
+            }
+		}
+
+        private void DrawTextData(Graphics g, TextData data)
+	    {
+
+            FontFamily ff = new FontFamily("Times New Roman");
+            Font font = new Font(ff, 23, FontStyle.Regular);
+            Color color = Color.Red;
+
             StringFormat sf = new StringFormat();
+
             
             // Local rotation of vertcal text (sf):
             GraphicsPath gp = new GraphicsPath();
-            gp.AddString("Isto é um teste e o COdebits é fixe!", new FontFamily("Times New Roman"), (int)FontStyle.Bold, 28,new Point(200, 200), sf);
+            gp.AddString(data.Text, ff, (int)FontStyle.Bold, 28, new Point(0,0), sf);
             Matrix m = new Matrix();
-            m.Rotate(45);  // clockwise
+            m.Translate(data.Location.X, data.Location.Y);
+            m.Rotate(data.Rotation);  // clockwise
             gp.Transform(m);
-            e.Graphics.DrawPath(Pens.Red, gp);  //g.FillPath(Brushes.Black, gp);
+            g.DrawPath(Pens.Red, gp);  //g.FillPath(Brushes.Black, gp);
             
-
-            // Global rotation of vertical text (sf):
-            e.Graphics.RotateTransform(45);  // anticlockwise
-            e.Graphics.DrawString("Isto é um teste e o Sapo é fixe!", new Font(new FontFamily("Times New Roman"), 23, FontStyle.Regular), new SolidBrush(Color.White), 0, 0, sf);
-                
-		}
+	    }
 
 
-		private void timer1_Tick(object sender, EventArgs e)
+	    private void timer1_Tick(object sender, EventArgs e)
 		{	
 
 			Invalidate();
 
             if (bHideVideo && movieRectangleHeight > INITIAL_MOVIE_RECTANGLE_HEIGHT)
             {
+                bShowTasks = false;
                 movieRectangleTop += 5;
                 movieRectangleHeight -= 10;
             }
@@ -180,16 +224,14 @@ namespace Procrasterminator
                 panelVideo.Visible = true;
                 video.Play();
                 bShowVideo = true;
+                bShowTasks = true;
             }
-            
-
 		}
 
 	    private void CloseWindow(object sender, EventArgs e)
 	    {
 	        bHideVideo = true;
             panelVideo.Visible = false;
-            System.Diagnostics.Debug.WriteLine("Death");
 	    }
 
 	    // Starting minimized is hacking crap done to get rid of the initial
@@ -206,5 +248,34 @@ namespace Procrasterminator
 	    {
 	        return bIsPlayingVideo;
 	    }
+
+        class TextData
+        {
+            private String text;
+            private Point location;
+            private int rotation;
+
+            public TextData(String text, Point location, int rotation)
+            {
+                this.location = location;
+                this.text = text;
+                this.rotation = rotation;
+            }
+
+            public string Text
+            {
+                get { return text; }
+            }
+
+            public Point Location
+            {
+                get { return location; }
+            }
+
+            public int Rotation
+            {
+                get { return rotation; }
+            }
+        }
 	}
 }
