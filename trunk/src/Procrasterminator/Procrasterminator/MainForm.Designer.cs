@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Facebook");
-            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("YouTube");
-            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Twitter");
-            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Collegehumor");
-            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Geekologie");
-            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Freerice");
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Pogo");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Bored");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Postsecret");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Hi5");
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Facebook");
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("YouTube");
+            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Twitter");
+            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Collegehumor");
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Geekologie");
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Freerice");
+            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Pogo");
+            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Bored");
+            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Postsecret");
+            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("Hi5");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.labelTitle = new System.Windows.Forms.Label();
             this.groupBoxListKeywords = new System.Windows.Forms.GroupBox();
@@ -59,13 +59,20 @@
             this.radioButtonTolerant = new System.Windows.Forms.RadioButton();
             this.radioButtonAggressive = new System.Windows.Forms.RadioButton();
             this.groupBoxTasks = new System.Windows.Forms.GroupBox();
+            this.buttonGetTasks = new System.Windows.Forms.Button();
+            this.labelTaskList = new System.Windows.Forms.Label();
+            this.labelHost = new System.Windows.Forms.Label();
+            this.listViewTaskList = new System.Windows.Forms.ListView();
+            this.comboBoxHost = new System.Windows.Forms.ComboBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
             this.groupBoxGeneral = new System.Windows.Forms.GroupBox();
             this.checkBoxLaunchOnStartUp = new System.Windows.Forms.CheckBox();
             this.menuStripTop = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.anoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxSapoTerminator = new System.Windows.Forms.PictureBox();
             this.timerController = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -75,15 +82,8 @@
             this.tolerantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.comboBoxHost = new System.Windows.Forms.ComboBox();
-            this.listViewTaskList = new System.Windows.Forms.ListView();
-            this.labelHost = new System.Windows.Forms.Label();
-            this.labelTaskList = new System.Windows.Forms.Label();
-            this.buttonGetTasks = new System.Windows.Forms.Button();
+            this.labelAnimationFile = new System.Windows.Forms.Label();
+            this.textBoxAnimationFile = new System.Windows.Forms.TextBox();
             this.groupBoxListKeywords.SuspendLayout();
             this.groupBoxMode.SuspendLayout();
             this.groupBoxTasks.SuspendLayout();
@@ -148,16 +148,16 @@
             // listViewKeyword
             // 
             this.listViewKeyword.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem31,
-            listViewItem32,
-            listViewItem33,
-            listViewItem34,
-            listViewItem35,
-            listViewItem36,
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40});
+            listViewItem21,
+            listViewItem22,
+            listViewItem23,
+            listViewItem24,
+            listViewItem25,
+            listViewItem26,
+            listViewItem27,
+            listViewItem28,
+            listViewItem29,
+            listViewItem30});
             this.listViewKeyword.Location = new System.Drawing.Point(6, 62);
             this.listViewKeyword.Name = "listViewKeyword";
             this.listViewKeyword.Size = new System.Drawing.Size(169, 230);
@@ -187,7 +187,7 @@
             this.groupBoxMode.Controls.Add(this.radioButtonAggressive);
             this.groupBoxMode.Location = new System.Drawing.Point(210, 96);
             this.groupBoxMode.Name = "groupBoxMode";
-            this.groupBoxMode.Size = new System.Drawing.Size(224, 260);
+            this.groupBoxMode.Size = new System.Drawing.Size(224, 244);
             this.groupBoxMode.TabIndex = 3;
             this.groupBoxMode.TabStop = false;
             this.groupBoxMode.Text = "Procrastination Mode:";
@@ -312,12 +312,97 @@
             this.groupBoxTasks.TabStop = false;
             this.groupBoxTasks.Text = "Tasks";
             // 
+            // buttonGetTasks
+            // 
+            this.buttonGetTasks.Location = new System.Drawing.Point(138, 155);
+            this.buttonGetTasks.Name = "buttonGetTasks";
+            this.buttonGetTasks.Size = new System.Drawing.Size(82, 22);
+            this.buttonGetTasks.TabIndex = 8;
+            this.buttonGetTasks.Text = "Get Tasks!";
+            this.buttonGetTasks.UseVisualStyleBackColor = true;
+            this.buttonGetTasks.Click += new System.EventHandler(this.buttonGetTasks_Click);
+            // 
+            // labelTaskList
+            // 
+            this.labelTaskList.AutoSize = true;
+            this.labelTaskList.Location = new System.Drawing.Point(8, 175);
+            this.labelTaskList.Name = "labelTaskList";
+            this.labelTaskList.Size = new System.Drawing.Size(53, 13);
+            this.labelTaskList.TabIndex = 7;
+            this.labelTaskList.Text = "Task List:";
+            // 
+            // labelHost
+            // 
+            this.labelHost.AutoSize = true;
+            this.labelHost.Location = new System.Drawing.Point(6, 26);
+            this.labelHost.Name = "labelHost";
+            this.labelHost.Size = new System.Drawing.Size(32, 13);
+            this.labelHost.TabIndex = 6;
+            this.labelHost.Text = "Host:";
+            // 
+            // listViewTaskList
+            // 
+            this.listViewTaskList.Location = new System.Drawing.Point(9, 191);
+            this.listViewTaskList.Name = "listViewTaskList";
+            this.listViewTaskList.Size = new System.Drawing.Size(211, 159);
+            this.listViewTaskList.TabIndex = 5;
+            this.listViewTaskList.UseCompatibleStateImageBehavior = false;
+            this.listViewTaskList.View = System.Windows.Forms.View.List;
+            // 
+            // comboBoxHost
+            // 
+            this.comboBoxHost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxHost.FormattingEnabled = true;
+            this.comboBoxHost.Items.AddRange(new object[] {
+            "Todoist.com"});
+            this.comboBoxHost.Location = new System.Drawing.Point(9, 42);
+            this.comboBoxHost.Name = "comboBoxHost";
+            this.comboBoxHost.Size = new System.Drawing.Size(211, 21);
+            this.comboBoxHost.TabIndex = 4;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(9, 129);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(209, 20);
+            this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.Text = "coiso";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Password:";
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(9, 90);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(208, 20);
+            this.textBoxEmail.TabIndex = 1;
+            this.textBoxEmail.Text = "grillher@gmail.com";
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(5, 70);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(38, 13);
+            this.labelEmail.TabIndex = 0;
+            this.labelEmail.Text = "E-mail:";
+            // 
             // groupBoxGeneral
             // 
+            this.groupBoxGeneral.Controls.Add(this.textBoxAnimationFile);
+            this.groupBoxGeneral.Controls.Add(this.labelAnimationFile);
             this.groupBoxGeneral.Controls.Add(this.checkBoxLaunchOnStartUp);
-            this.groupBoxGeneral.Location = new System.Drawing.Point(212, 362);
+            this.groupBoxGeneral.Location = new System.Drawing.Point(212, 346);
             this.groupBoxGeneral.Name = "groupBoxGeneral";
-            this.groupBoxGeneral.Size = new System.Drawing.Size(222, 94);
+            this.groupBoxGeneral.Size = new System.Drawing.Size(222, 110);
             this.groupBoxGeneral.TabIndex = 5;
             this.groupBoxGeneral.TabStop = false;
             this.groupBoxGeneral.Text = "General";
@@ -327,7 +412,7 @@
             this.checkBoxLaunchOnStartUp.AutoSize = true;
             this.checkBoxLaunchOnStartUp.Checked = true;
             this.checkBoxLaunchOnStartUp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLaunchOnStartUp.Location = new System.Drawing.Point(13, 44);
+            this.checkBoxLaunchOnStartUp.Location = new System.Drawing.Point(13, 25);
             this.checkBoxLaunchOnStartUp.Name = "checkBoxLaunchOnStartUp";
             this.checkBoxLaunchOnStartUp.Size = new System.Drawing.Size(199, 17);
             this.checkBoxLaunchOnStartUp.TabIndex = 0;
@@ -337,8 +422,7 @@
             // menuStripTop
             // 
             this.menuStripTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStripTop.Location = new System.Drawing.Point(0, 0);
             this.menuStripTop.Name = "menuStripTop";
             this.menuStripTop.Size = new System.Drawing.Size(684, 24);
@@ -359,20 +443,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.anoutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // anoutToolStripMenuItem
-            // 
-            this.anoutToolStripMenuItem.Name = "anoutToolStripMenuItem";
-            this.anoutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.anoutToolStripMenuItem.Text = "About";
             // 
             // pictureBoxSapoTerminator
             // 
@@ -444,88 +514,23 @@
             this.toolStripMenuItemExit.Text = "Exit";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
             // 
-            // labelEmail
+            // labelAnimationFile
             // 
-            this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(5, 70);
-            this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(38, 13);
-            this.labelEmail.TabIndex = 0;
-            this.labelEmail.Text = "E-mail:";
+            this.labelAnimationFile.AutoSize = true;
+            this.labelAnimationFile.Location = new System.Drawing.Point(6, 51);
+            this.labelAnimationFile.Name = "labelAnimationFile";
+            this.labelAnimationFile.Size = new System.Drawing.Size(75, 13);
+            this.labelAnimationFile.TabIndex = 1;
+            this.labelAnimationFile.Text = "Animation File:";
             // 
-            // textBoxEmail
+            // textBoxAnimationFile
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(9, 90);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(208, 20);
-            this.textBoxEmail.TabIndex = 1;
-            this.textBoxEmail.Text = "grillher@gmail.com";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Password:";
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(9, 129);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(209, 20);
-            this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.Text = "coiso";
-            // 
-            // comboBoxHost
-            // 
-            this.comboBoxHost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxHost.FormattingEnabled = true;
-            this.comboBoxHost.Items.AddRange(new object[] {
-            "Todoist.com"});
-            this.comboBoxHost.Location = new System.Drawing.Point(9, 42);
-            this.comboBoxHost.Name = "comboBoxHost";
-            this.comboBoxHost.Size = new System.Drawing.Size(211, 21);
-            this.comboBoxHost.TabIndex = 4;
-            // 
-            // listViewTaskList
-            // 
-            this.listViewTaskList.Location = new System.Drawing.Point(9, 191);
-            this.listViewTaskList.Name = "listViewTaskList";
-            this.listViewTaskList.Size = new System.Drawing.Size(211, 159);
-            this.listViewTaskList.TabIndex = 5;
-            this.listViewTaskList.UseCompatibleStateImageBehavior = false;
-            this.listViewTaskList.View = System.Windows.Forms.View.List;
-            // 
-            // labelHost
-            // 
-            this.labelHost.AutoSize = true;
-            this.labelHost.Location = new System.Drawing.Point(6, 26);
-            this.labelHost.Name = "labelHost";
-            this.labelHost.Size = new System.Drawing.Size(32, 13);
-            this.labelHost.TabIndex = 6;
-            this.labelHost.Text = "Host:";
-            // 
-            // labelTaskList
-            // 
-            this.labelTaskList.AutoSize = true;
-            this.labelTaskList.Location = new System.Drawing.Point(8, 175);
-            this.labelTaskList.Name = "labelTaskList";
-            this.labelTaskList.Size = new System.Drawing.Size(53, 13);
-            this.labelTaskList.TabIndex = 7;
-            this.labelTaskList.Text = "Task List:";
-            // 
-            // buttonGetTasks
-            // 
-            this.buttonGetTasks.Location = new System.Drawing.Point(138, 155);
-            this.buttonGetTasks.Name = "buttonGetTasks";
-            this.buttonGetTasks.Size = new System.Drawing.Size(82, 22);
-            this.buttonGetTasks.TabIndex = 8;
-            this.buttonGetTasks.Text = "Get Tasks!";
-            this.buttonGetTasks.UseVisualStyleBackColor = true;
-            this.buttonGetTasks.Click += new System.EventHandler(this.buttonGetTasks_Click);
+            this.textBoxAnimationFile.Location = new System.Drawing.Point(9, 73);
+            this.textBoxAnimationFile.Name = "textBoxAnimationFile";
+            this.textBoxAnimationFile.ReadOnly = true;
+            this.textBoxAnimationFile.Size = new System.Drawing.Size(203, 20);
+            this.textBoxAnimationFile.TabIndex = 2;
+            this.textBoxAnimationFile.Text = "Procrasterminator.avi";
             // 
             // MainForm
             // 
@@ -583,8 +588,6 @@
         private System.Windows.Forms.MenuStrip menuStripTop;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem anoutToolStripMenuItem;
         private System.Windows.Forms.Button buttonRemoveKeyword;
         private System.Windows.Forms.Timer timerController;
         private System.Windows.Forms.Label labelTolerantSeconds;
@@ -608,6 +611,8 @@
         private System.Windows.Forms.ListView listViewTaskList;
         private System.Windows.Forms.ComboBox comboBoxHost;
         private System.Windows.Forms.Button buttonGetTasks;
+        private System.Windows.Forms.TextBox textBoxAnimationFile;
+        private System.Windows.Forms.Label labelAnimationFile;
     }
 }
 

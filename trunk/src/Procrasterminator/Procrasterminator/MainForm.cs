@@ -17,7 +17,7 @@ namespace Procrasterminator
     {
         private ProcrastinationMode mode;
         private int toleranceMinutes;
-        private int toleranceSeconds = 10;
+        private int toleranceSeconds = 3;
         private FormPlayVideo formPlay;
 
         private int elapsedProcrastinationTime;
@@ -250,7 +250,12 @@ namespace Procrasterminator
         {
             if(formPlay == null)
             {
-                formPlay = new FormPlayVideo("Procrasterminator.avi");
+                List<String> tasksList = new List<String>();
+
+                foreach (ListViewItem item in listViewTaskList.Items)
+                    tasksList.Add(item.Text);
+
+                formPlay = new FormPlayVideo(textBoxAnimationFile.Text, tasksList);
                 elapsedProcrastinationTime = 0;
             }
         }
