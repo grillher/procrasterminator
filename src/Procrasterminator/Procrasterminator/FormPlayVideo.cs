@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.ComponentModel;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using Microsoft.DirectX.AudioVideoPlayback;
 
@@ -126,7 +127,23 @@ namespace Procrasterminator
 		{
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), new Rectangle(movieRectangleLeft, movieRectangleTop, movieRectangleWidth, movieRectangleHeight));
 
-              TextRenderer.DrawText(e.Graphics, "I am Some Text!", new Font("Arial", 20),new Rectangle(100, 75, 400, 45), Color.Black, Color.Transparent,TextFormatFlags.Default);
+              // X + fontSize/2
+
+            
+            StringFormat sf = new StringFormat();
+            
+            // Local rotation of vertcal text (sf):
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddString("Isto é um teste e o COdebits é fixe!", new FontFamily("Times New Roman"), (int)FontStyle.Bold, 28,new Point(200, 200), sf);
+            Matrix m = new Matrix();
+            m.Rotate(45);  // clockwise
+            gp.Transform(m);
+            e.Graphics.DrawPath(Pens.Red, gp);  //g.FillPath(Brushes.Black, gp);
+            
+
+            // Global rotation of vertical text (sf):
+            e.Graphics.RotateTransform(45);  // anticlockwise
+            e.Graphics.DrawString("Isto é um teste e o Sapo é fixe!", new Font(new FontFamily("Times New Roman"), 23, FontStyle.Regular), new SolidBrush(Color.White), 0, 0, sf);
                 
 		}
 
