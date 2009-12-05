@@ -125,6 +125,9 @@ namespace Procrasterminator
 		protected override void OnPaint(PaintEventArgs e)
 		{
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), new Rectangle(movieRectangleLeft, movieRectangleTop, movieRectangleWidth, movieRectangleHeight));
+
+              TextRenderer.DrawText(e.Graphics, "I am Some Text!", new Font("Arial", 20),new Rectangle(100, 75, 400, 45), Color.Black, Color.Transparent,TextFormatFlags.Default);
+                
 		}
 
 
