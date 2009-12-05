@@ -25,7 +25,7 @@ namespace Procrasterminator
 	    private int movieRectangleTop;
         private int movieRectangleLeft;
 	    private int movieRectangleHeight;
-	    private bool bIsPlayingVideo = false;
+	    private bool bIsPlayingVideo = true;
 
 	    public FormPlayVideo(String path)
 		{
