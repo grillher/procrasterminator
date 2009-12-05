@@ -18,7 +18,6 @@ namespace Procrasterminator
         private ProcrastinationMode mode;
         private int toleranceMinutes;
         private int toleranceSeconds = 10;
-        private bool isPlayingVideo = false;
         private FormPlayVideo formPlay;
 
         private int elapsedProcrastinationTime;
@@ -214,7 +213,12 @@ namespace Procrasterminator
         private void timerController_Tick(object sender, EventArgs e)
         {
             CheckInternetExplorerWindows();
-            //CheckMozillaFireFoxWindows();
+
+            if(formPlay != null && !formPlay.IsPlayingVideo())
+            {
+                formPlay = null;
+                KillInternetExplorerWindows();
+            }
         }
 
         private void CheckInternetExplorerWindows()
@@ -234,9 +238,7 @@ namespace Procrasterminator
                                 elapsedProcrastinationTime++;
 
                                 if (elapsedProcrastinationTime >= toleranceMinutes * 60 + toleranceSeconds)
-                                {
                                     ShowVideo();
-                                }
                                 break;
                         }
                     }
@@ -246,14 +248,10 @@ namespace Procrasterminator
 
         private void ShowVideo()
         {
-            if(formPlay == null || !formPlay.IsPlayingVideo())
+            if(formPlay == null)
             {
-                isPlayingVideo = true;
                 formPlay = new FormPlayVideo("Procrasterminator.avi");
-
                 elapsedProcrastinationTime = 0;
-
-                KillInternetExplorerWindows();
             }
         }
 
